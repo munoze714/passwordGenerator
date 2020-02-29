@@ -1,40 +1,53 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var lowercase = 'abcdefghijklmnopqrstuvwxyz';
+var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var number = '0123456789';
+var symbol = '!@#$%^&*()_+<>?{}|[';
+var string = '';
+var output = "";
+var length;
+var upper;
+var lower;
+var sym;
+var num;
+
 // Write password to the #password input
 function writePassword() {
-    generatePassword(string);
-    var passwordText = document.querySelector("#password");
-    passwordText.value = password;
+    generatePassword();
+
 };
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", function (length, uppercase, lowercase, symbol, number) {
+generateBtn.addEventListener("click", function () {
 
-    var length = prompt("Choose a length from 8-100 characters");
-    var uppercase = prompt("Do want upper case letters?");
-    var lowercase = prompt("Do want lower case letters?");
-    var symbol = confirm("Do you want to add symbols?");
-    var number = confirm("Do you want to add numers?");
+    length = prompt("Choose a length from 8-100 characters");
+    upper = confirm("Do you want upper case letters?");
+    lower = confirm("Do you want lower case letters?");
+    sym = confirm("Do you want to add symbols?");
+    num = confirm("Do you want to add numers?");
 
-
-    generateBtn.value = password(length, uppercase, lowercase, symbol, number);
-
+    if (upper === true) {
+        output = output + uppercase
+    }
+    if (lower === true) {
+        output = output + lower
+    }
+    if (sym === true) {
+        output = output + symbol
+    }
+    if (num === true) {
+        output = output + number
+    }
+    writePassword()
 });
-var output = {
-    lowercase: 'abcdefghijklmnopqrstuvwxyz',
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    number: '0123456789',
-    symbool: '!@#$%^&*()_+<>?{}|['
-}
 
 function generatePassword() {
-    var string = "";
-
-    for (var i = 0; i < generateBtn; i++) {
-        string += output[Math.floor(Math.random(generateBtn) * 10)];
-        writePassword(string)
+    for (var i = 0; i < length; i++) {
+        string += output.charAt(Math.floor(Math.random() * output.length));
     }
-
+    var passwordText = document.querySelector("#password");
+    passwordText.value = string;
 }
 
