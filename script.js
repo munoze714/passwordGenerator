@@ -1,53 +1,40 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var number = '0123456789';
-var symbol = '!@#$%^&*()_+?><';
-
-
-
-
 
 // Write password to the #password input
 function writePassword() {
-    var password = generatePassword();
+    generatePassword(string);
     var passwordText = document.querySelector("#password");
-
     passwordText.value = password;
-
-}
+};
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); {
+generateBtn.addEventListener("click", function (length, uppercase, lowercase, symbol, number) {
 
     var length = prompt("Choose a length from 8-100 characters");
+    var uppercase = prompt("Do want upper case letters?");
+    var lowercase = prompt("Do want lower case letters?");
+    var symbol = confirm("Do you want to add symbols?");
+    var number = confirm("Do you want to add numers?");
 
-    var sym = confirm("Do you want to add symbols?");
 
-    var num = confirm("Do you want to add numers?");
+    generateBtn.value = password(length, uppercase, lowercase, symbol, number);
 
-    var randomPwd = characters, number, symbol;
-
-    (sym.true) ? randomPwd += sym : '';
-
-    (num.true) ? randomPwd += sym : '';
-
-    generateBtn.value = password(length.value, randomPwd);
-
+});
+var output = {
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    number: '0123456789',
+    symbool: '!@#$%^&*()_+<>?{}|['
 }
 
-function password(l, randomPwd) {
-    var passwordText = '';
-    for (var i = 0; i, l; i++) {
-        passwordText += randomPwd.charAt(Math.floor(Math.random() * randomPwd.length));
+function generatePassword() {
+    var string = "";
 
+    for (var i = 0; i < generateBtn; i++) {
+        string += output[Math.floor(Math.random(generateBtn) * 10)];
+        writePassword(string)
     }
 
-    return passwordText;
 }
-writePassword()
-
-
-
-
 
